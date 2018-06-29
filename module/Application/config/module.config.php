@@ -7,6 +7,13 @@
 
 namespace Application;
 
+use Application\Controller\Factory\HeadControllerFactory;
+use Application\Service\CategoryManager;
+use Application\Service\CurrencyManager;
+use Application\Service\Factory\CategoryManagerFactory;
+use Application\Service\Factory\CurrencyManagerFactory;
+use Application\Service\Factory\OfferManagerFactory;
+use Application\Service\OfferManager;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\Regex;
@@ -37,16 +44,16 @@ return [
                     ],
                 ],
             ],
-            'posts' => [
+            'head' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/posts[/:action[/:id]]',
+                    'route'    => '/head[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]*'
                     ],
                     'defaults' => [
-                        'controller'    => Controller\PostController::class,
+                        'controller'    => Controller\HeadController::class,
                         'action'        => 'index',
                     ],
                 ],
@@ -66,12 +73,16 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
-            Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
+            Controller\HeadController::class => Controller\Factory\HeadControllerFactory::class,
+
         ],
     ],
     'service_manager' => [
         'factories' => [
-            Service\PostManager::class => Service\Factory\PostManagerFactory::class,
+            Service\HeadManager::class => Service\Factory\HeadManagerFactory::class,
+            CurrencyManager::class => CurrencyManagerFactory::class,
+            OfferManager::class => OfferManagerFactory::class,
+            CategoryManager::class => CategoryManagerFactory::class
         ],
     ],
     // The following registers our custom view 

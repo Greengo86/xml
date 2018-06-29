@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?= $this->headTitle('Blog')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?= $this->headTitle('Test')->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?= $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -28,14 +28,14 @@
             <div class="row">
                 <!-- Page header -->
                 <div class="col-md-4">
-                    <div class="app-caption">Blog</div>
+                    <div class="app-caption">Test - Xml</div>
                 </div>                
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <!-- Navigation bar -->
                     <?php
-                    // Initialize navbar items
+                    // Тестовое меню - пункты пока не придумал
                     $this->mainMenu()->setItems([
                         [
                             'id' => 'home',
@@ -44,13 +44,13 @@
                         ],
                         [
                             'id' => 'admin',
-                            'label' => 'Admin',
-                            'link' => $this->url('posts', ['action'=>'admin'])
+                            'label' => 'Test1',
+                            'link' => $this->url('home')
                         ],
                         [
                             'id' => 'about',
-                            'label' => 'About',
-                            'link' => $this->url('about')
+                            'label' => 'Test2',
+                            'link' => $this->url('home')
                         ],
                     ]);
 
@@ -63,12 +63,6 @@
                     // Render the navbar
                     echo $this->mainMenu()->render();
                     ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Breadcrumbs -->
-                    <?= $this->pageBreadcrumbs()->render(); ?>
                 </div>
             </div>
             <div class="row">
